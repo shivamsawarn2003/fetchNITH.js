@@ -1,0 +1,778 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">            
+        <meta name="theme-color" content="#ffffff">
+            <style>
+
+                * { margin: 0; padding: 0; 
+
+                }   
+                body {
+                    font: 13px/1.4 Helvetica, Arial, sans-serif;    
+
+                }
+
+                #page-wrap {margin: 10px auto; width: 1000px;border: 1px solid #ccc;padding: 20px;}
+                #terms p {text-align: left;}
+                #terms ul li {text-align: left;padding: 0 0;list-style: none;}
+                textarea { border: 0; font: 14px Helvetica, Arial, sans-serif; overflow: hidden; resize: none; }
+                table { border-collapse: collapse; }
+                table td, table th { border: 1px solid black; padding: 5px; }
+
+                #header { height: 15px; width: 100%; margin: 20px 0; background: #222; text-align: center; color: white; font: bold 15px Helvetica, Sans-Serif; text-decoration: uppercase; letter-spacing: 20px; padding: 8px 0px; }
+
+                #address { width: 250px; height: 150px; float: left; }
+                #customer { overflow: hidden; }
+
+                #logo { text-align: right; float: right; position: relative; margin-top: 25px; border: 1px solid #fff; max-width: 540px; overflow: hidden; }
+                #customer-title { font-size: 20px; font-weight: bold; float: left; }
+
+                #meta { margin-top: 1px; width: 100%; float: right; }
+                #meta td { text-align: right;  }
+                #meta td.meta-head { text-align: left; background: #eee; }
+                #meta td textarea { width: 100%; height: 20px; text-align: right; }
+
+                #items { clear: both; width: 100%; margin: 30px 0 0 0; border: 1px solid black; }
+                #items th { background: #eee; }
+                #items textarea { width: 80px; height: 50px; }
+                #items tr.item-row td {  vertical-align: top; }
+                #items td.description { width: 300px; }
+                #items td.item-name { width: 175px; }
+                #items td.description textarea, #items td.item-name textarea { width: 100%; }
+                #items td.total-line { border-right: 0; text-align: right; }
+                #items td.total-value { border-left: 0; padding: 10px; }
+                #items td.total-value textarea { height: 20px; background: none; }
+                #items td.balance { background: #eee; }
+                #items td.blank { border: 0; }
+
+                #terms { text-align: center; margin: 20px 0 0 0; }
+                #terms h5 { text-transform: uppercase; font: 13px Helvetica, Sans-Serif; letter-spacing: 10px; border-bottom: 1px solid black; padding: 0 0 8px 0; margin: 0 0 8px 0; }
+                #terms textarea { width: 100%; text-align: center;}
+                .sig {
+                    height: 47px;
+                }
+
+                .sig p {
+                    text-align: center;
+                }
+
+                .originalfor {
+                    width: 100%;
+                }
+                .originalfor th {
+                    border: none;
+                }
+                .originalfor td {
+                    border: none;
+                }
+                .chek input {
+                    margin-top: 9px;
+                }
+                .bord {
+                    border: none;
+                }
+                .itdis {
+                    font-size:13px;
+                }
+                .divbor {
+                    border: 1px solid #333;
+                    padding: 1px;
+                    margin-top: 1px;
+                }
+                .taxinvoice th {
+                    width: 117px;
+                    height: 20px;
+                }
+                .taxin_voice td {
+                    width: 117px;
+                    height: 21px;
+                }
+                .ra {
+                    width: 50%;
+                }
+                /*.taxin_voice td {
+                  padding: 6px 45px;
+                }*/
+                .taxcgst th{
+                    font-weight: normal !important;  
+
+                }
+                .taxin_voice {
+                    margin-left: -6px;
+                    margin-top: -6px;
+                    margin-right: -6px;
+                    margin-bottom: -6px;
+                }
+                .taxinvoice {
+                    margin: 11px -6px -6px;
+                }
+                .texsummary {
+                    font-weight: bold;
+                }
+                .taxin_voice .raigst {
+                    width: 178px;
+                }
+                .taxinvoice .raigst {
+                    width: 178px;
+                }
+                /*.taxinvoice th {
+                  padding: 6px 43px;
+                }*/
+                .taxcgst th {
+                    font-weight: bold !important;
+                }
+                .taxin_voice p {
+                    width: 71px;
+                }
+
+
+
+                .delete-wpr { position: relative; }
+                .delete { display: block; color: #000; text-decoration: none; position: absolute; background: #EEEEEE; font-weight: bold; padding: 0px 3px; border: 1px solid; top: -6px; left: -22px; font-family: Verdana; font-size: 12px; }
+
+                /* Extra CSS for Print Button*/
+                .button {
+                    display: -webkit-box;
+                    display: -webkit-flex;
+                    display: -ms-flexbox;
+                    display: flex;
+                    overflow: hidden;
+                    margin-top: 20px;
+                    padding: 12px 12px;
+                    cursor: pointer;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                    -webkit-transition: all 60ms ease-in-out;
+                    transition: all 60ms ease-in-out;
+                    text-align: center;
+                    white-space: nowrap;
+                    text-decoration: none !important;
+
+                    color: #fff;
+                    border: 0 none;
+                    border-radius: 4px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: 1.3;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+
+                    -webkit-box-pack: center;
+                    -webkit-justify-content: center;
+                    -ms-flex-pack: center;
+                    justify-content: center;
+                    -webkit-box-align: center;
+                    -webkit-align-items: center;
+                    -ms-flex-align: center;
+                    align-items: center;
+                    -webkit-box-flex: 0;
+                    -webkit-flex: 0 0 160px;
+                    -ms-flex: 0 0 160px;
+                    flex: 0 0 160px;
+                }
+                .button:hover {
+                    -webkit-transition: all 60ms ease;
+                    transition: all 60ms ease;
+                    opacity: .85;
+                }
+                .button:active {
+                    -webkit-transition: all 60ms ease;
+                    transition: all 60ms ease;
+                    opacity: .75;
+                }
+                .button:focus {
+                    outline: 1px dotted #959595;
+                    outline-offset: -4px;
+                }
+
+                .button.-regular {
+                    color: #202129;
+                    background-color: #edeeee;
+                }
+                .button.-regular:hover {
+                    color: #202129;
+                    background-color: #e1e2e2;
+                    opacity: 1;
+                }
+                .button.-regular:active {
+                    background-color: #d5d6d6;
+                    opacity: 1;
+                }
+
+                .button.-dark {
+                    color: #FFFFFF;
+                    background: #333030;
+                    float: right;
+                    margin-bottom: 26px;
+                    margin-right: 277px;
+                    margin-top: -5px;
+                }
+                .button.-dark:focus {
+                    outline: 1px dotted white;
+                    outline-offset: -4px;
+                }
+                .button.-darks {
+                    color: #FFFFFF;
+                    background: #333030;
+                    float: right;
+                    margin-bottom: 26px;
+
+                    margin-top: -5px;
+                }
+                .button.-darks:focus {
+                    outline: 1px dotted white;
+                    outline-offset: -4px;
+                }
+                .formSetting {
+                    width: 50%;
+                    display: inline;
+
+                }
+                .finalDoc {
+                    margin-left: 13px;
+                    margin-top: 11px;
+                    font-size: 10px; 
+                }
+                .report_header { page-break-before:always; }
+                @media print
+                {
+                    .no-print, .no-print *
+                    {
+                        display: none !important;
+                    }
+					.pagebreak { page-break-before: always; } /* page-break-after works, as well */
+
+                }
+                @page {
+                    margin: 10px auto; size: auto;
+                } 
+ 			
+            </style>
+    </head>
+    <body>
+        <button class="button -darks center no-print" onclick="window.print();">Click Here to Print</button>
+        <div id="page-wrap" class="report_header" style="page-break-after:always"> 
+            <table width="100%">    
+                <tbody><tr>
+                    <td style="border: 0;  text-align: center">   
+                        <img style="width: 100%;" src="./images/logo.png">                                
+                        <p style="text-align:center;font-size: 19px;font-weight: bold;">Regular Result </p>
+
+                    </td>
+                </tr>
+            </tbody></table>     
+
+
+			
+            <table width="100%">   
+                <tbody><tr>
+                    <td style="text-align: left" width="20%">
+                        <p class="formSetting"><b>ROLL NUMBER </b></p>
+                        <p class="formSetting" style="float:right;text-align: right; font-weight:bold;"> 22BME102 </p>
+                    </td>
+                    <td style="text-align: left" width="40%">
+                        <p class="formSetting"><b>STUDENT NAME</b></p>
+                        <p class="formSetting" style="float:right;text-align: right;font-weight:bold;"> SHIVAM KUMAR  </p>
+                    </td>
+                    <td style="text-align: left" width="40%">
+                        <p class="formSetting"><b>FATHER NAME </b></p>
+                        <p class="formSetting" style="float:right;text-align: right; font-weight:bold;"> SHYAMAL KUMAR </p>
+                    </td>
+                </tr>                        
+            </tbody></table>
+
+
+            <table width="100%">   
+                <tbody><tr class="info" style="background-color: #d9edf7;">
+                    <td style="text-align: center;font-size: 18px;" colspan="6"> Semester : S01 </td>
+                </tr>  
+                <tr class="thcolor">
+                    <th style="width:2% !important; text-align:left !important;">#</th>
+                    <th style="width:58% !important; text-align:left !important;">Subject </th>
+                    <th style="width:10% !important; text-align:left !important;">Subject Code</th>
+                    <th style="width:10% !important; text-align:left !important;">Sub Point</th>
+                    <th style="width:10% !important; text-align:left !important;">Grade</th>
+                    <th style="width:10% !important; text-align:left !important;">Sub GP</th>
+                </tr>
+				
+						
+				
+				
+				
+                <tr>
+                    <td>1</td>
+                    <td>ENGINEERING MATHEMATICS-I </td>
+                    <td>MA-111</td>
+                    <td>4</td>
+                    <td>BC</td>
+                    <td>28</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>2</td>
+                    <td>ENGINEERING CHEMISTRY </td>
+                    <td>CY-101</td>
+                    <td>4</td>
+                    <td>AB</td>
+                    <td>36</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>3</td>
+                    <td>ENGINEERING CHEMISTRY LAB </td>
+                    <td>CY-102</td>
+                    <td>1</td>
+                    <td>AB</td>
+                    <td>9</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>4</td>
+                    <td>COMMUNICATION SKILLS LAB </td>
+                    <td>HS-102</td>
+                    <td>1</td>
+                    <td>AB</td>
+                    <td>9</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>5</td>
+                    <td>BASIC ELECTRICAL ENGINEERING </td>
+                    <td>EE-101</td>
+                    <td>4</td>
+                    <td>BC</td>
+                    <td>28</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>6</td>
+                    <td>MATERIALS SCIENCE &amp; ENGINEERING </td>
+                    <td>MS-101</td>
+                    <td>3</td>
+                    <td>B</td>
+                    <td>24</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>7</td>
+                    <td>COMMUNICATION SKILLS </td>
+                    <td>HS-101</td>
+                    <td>3</td>
+                    <td>A</td>
+                    <td>30</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>8</td>
+                    <td>ELECTRICAL ENGINEERING LAB </td>
+                    <td>EE-102</td>
+                    <td>1</td>
+                    <td>B</td>
+                    <td>8</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>9</td>
+                    <td>ENGINEERING WORKSHOP </td>
+                    <td>ME-102</td>
+                    <td>3</td>
+                    <td>B</td>
+                    <td>24</td>
+                </tr>
+                
+            
+			
+			
+			</tbody></table>
+            <table width="100%">   
+                <tbody><tr style="background-color: #d99900;">
+                    <td style="text-align: left" width="20%">
+                        <p class="formSetting"><b>SR </b></p>
+                        <p class="formSetting" style="float:right;text-align: right; font-weight:bold;"> S01 </p>
+                    </td>
+                    <td style="text-align: left" width="20%">
+                        <p class="formSetting"><b>SGPI </b></p>
+                        <p class="formSetting" style="float:right;text-align: right; font-weight:bold;">196/24=8.17</p>
+                    </td>
+                    <td style="text-align: left" width="20%">
+                        <p class="formSetting"><b>SGPI TOTAL </b></p>
+                        <p class="formSetting" style="float:right;text-align: right; font-weight:bold;">196</p>
+                    </td>
+                    <td style="text-align: left" width="20%">
+                        <p class="formSetting"><b>CGPI</b></p>
+                        <p class="formSetting" style="float:right;text-align: right; font-weight:bold;">196/24=8.17</p>
+                    </td>
+                    <td style="text-align: left" width="20%">
+                        <p class="formSetting"><b>CGPI TOTAL </b></p>
+                        <p class="formSetting" style="float:right;text-align: right; font-weight:bold;">196</p>
+                    </td>
+                </tr>                        
+            </tbody></table>
+			
+			
+			
+
+            <table width="100%">   
+                <tbody><tr class="info" style="background-color: #d9edf7;">
+                    <td style="text-align: center;font-size: 18px;" colspan="6"> Semester : S02 </td>
+                </tr>  
+                <tr class="thcolor">
+                    <th style="width:2% !important; text-align:left !important;">#</th>
+                    <th style="width:58% !important; text-align:left !important;">Subject </th>
+                    <th style="width:10% !important; text-align:left !important;">Subject Code</th>
+                    <th style="width:10% !important; text-align:left !important;">Sub Point</th>
+                    <th style="width:10% !important; text-align:left !important;">Grade</th>
+                    <th style="width:10% !important; text-align:left !important;">Sub GP</th>
+                </tr>
+				
+						
+				
+				
+				
+                <tr>
+                    <td>1</td>
+                    <td>ENGINEERING GRAPHICS </td>
+                    <td>ME-101</td>
+                    <td>3</td>
+                    <td>C</td>
+                    <td>18</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>2</td>
+                    <td>ENGINEERING MATHEMATICS-II </td>
+                    <td>MA-121</td>
+                    <td>4</td>
+                    <td>AB</td>
+                    <td>36</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>3</td>
+                    <td>ENGINEERING PHYSICS </td>
+                    <td>PH-101</td>
+                    <td>4</td>
+                    <td>B</td>
+                    <td>32</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>4</td>
+                    <td>BASIC ELECTRONICS ENGINEERING </td>
+                    <td>EC-101</td>
+                    <td>3</td>
+                    <td>BC</td>
+                    <td>21</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>5</td>
+                    <td>ELECTRONICS ENGINEERING LAB </td>
+                    <td>EC-102</td>
+                    <td>1</td>
+                    <td>B</td>
+                    <td>8</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>6</td>
+                    <td>COMPUTER PROGRAMMING </td>
+                    <td>CS-101</td>
+                    <td>3</td>
+                    <td>B</td>
+                    <td>24</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>7</td>
+                    <td>COMPUTER PROGRAMMING LAB </td>
+                    <td>CS-102</td>
+                    <td>1</td>
+                    <td>AB</td>
+                    <td>9</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>8</td>
+                    <td>ENGINEERING PHYSICS LAB </td>
+                    <td>PH-102</td>
+                    <td>1</td>
+                    <td>AB</td>
+                    <td>9</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>9</td>
+                    <td>APPLIED MECHANICS </td>
+                    <td>CE-101</td>
+                    <td>4</td>
+                    <td>BC</td>
+                    <td>28</td>
+                </tr>
+                
+            
+			
+			
+			</tbody></table>
+            <table width="100%">   
+                <tbody><tr style="background-color: #d99900;">
+                    <td style="text-align: left" width="20%">
+                        <p class="formSetting"><b>SR </b></p>
+                        <p class="formSetting" style="float:right;text-align: right; font-weight:bold;"> S02 </p>
+                    </td>
+                    <td style="text-align: left" width="20%">
+                        <p class="formSetting"><b>SGPI </b></p>
+                        <p class="formSetting" style="float:right;text-align: right; font-weight:bold;">185/24=7.71</p>
+                    </td>
+                    <td style="text-align: left" width="20%">
+                        <p class="formSetting"><b>SGPI TOTAL </b></p>
+                        <p class="formSetting" style="float:right;text-align: right; font-weight:bold;">185</p>
+                    </td>
+                    <td style="text-align: left" width="20%">
+                        <p class="formSetting"><b>CGPI</b></p>
+                        <p class="formSetting" style="float:right;text-align: right; font-weight:bold;">381/48=7.94</p>
+                    </td>
+                    <td style="text-align: left" width="20%">
+                        <p class="formSetting"><b>CGPI TOTAL </b></p>
+                        <p class="formSetting" style="float:right;text-align: right; font-weight:bold;">381</p>
+                    </td>
+                </tr>                        
+            </tbody></table>
+			
+			
+			
+
+            <table width="100%">   
+                <tbody><tr class="info" style="background-color: #d9edf7;">
+                    <td style="text-align: center;font-size: 18px;" colspan="6"> Semester : S03 </td>
+                </tr>  
+                <tr class="thcolor">
+                    <th style="width:2% !important; text-align:left !important;">#</th>
+                    <th style="width:58% !important; text-align:left !important;">Subject </th>
+                    <th style="width:10% !important; text-align:left !important;">Subject Code</th>
+                    <th style="width:10% !important; text-align:left !important;">Sub Point</th>
+                    <th style="width:10% !important; text-align:left !important;">Grade</th>
+                    <th style="width:10% !important; text-align:left !important;">Sub GP</th>
+                </tr>
+				
+						
+				
+				
+				
+                <tr>
+                    <td>1</td>
+                    <td>FLUID MECHANICS &amp; MACHINERY LAB </td>
+                    <td>ME-215</td>
+                    <td>1</td>
+                    <td>AB</td>
+                    <td>9</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>2</td>
+                    <td>FLUID MECHANICS &amp; MACHINERY </td>
+                    <td>ME-213</td>
+                    <td>4</td>
+                    <td>B</td>
+                    <td>32</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>3</td>
+                    <td>MACHINE DRAWING LAB </td>
+                    <td>ME-217</td>
+                    <td>1</td>
+                    <td>B</td>
+                    <td>8</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>4</td>
+                    <td>KINEMATICS OF MACHINES </td>
+                    <td>ME-211</td>
+                    <td>4</td>
+                    <td>BC</td>
+                    <td>28</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>5</td>
+                    <td>METROLOGY AND MEASUREMENT </td>
+                    <td>ME-214</td>
+                    <td>4</td>
+                    <td>AB</td>
+                    <td>36</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>6</td>
+                    <td>METROLOGY AND MEASUREMENT LAB </td>
+                    <td>ME-216</td>
+                    <td>1</td>
+                    <td>AB</td>
+                    <td>9</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>7</td>
+                    <td>ENGINEERING THERMODYNAMICS </td>
+                    <td>ME-212</td>
+                    <td>4</td>
+                    <td>D</td>
+                    <td>16</td>
+                </tr>
+                
+            
+				
+				
+				
+                <tr>
+                    <td>8</td>
+                    <td>ORGANIZATIONAL BEHAVIOUR </td>
+                    <td>HS-203</td>
+                    <td>3</td>
+                    <td>AB</td>
+                    <td>27</td>
+                </tr>
+                
+            
+			
+			
+			</tbody></table>
+            <table width="100%">   
+                <tbody><tr style="background-color: #d99900;">
+                    <td style="text-align: left" width="20%">
+                        <p class="formSetting"><b>SR </b></p>
+                        <p class="formSetting" style="float:right;text-align: right; font-weight:bold;"> S03 </p>
+                    </td>
+                    <td style="text-align: left" width="20%">
+                        <p class="formSetting"><b>SGPI </b></p>
+                        <p class="formSetting" style="float:right;text-align: right; font-weight:bold;">165/22=7.5</p>
+                    </td>
+                    <td style="text-align: left" width="20%">
+                        <p class="formSetting"><b>SGPI TOTAL </b></p>
+                        <p class="formSetting" style="float:right;text-align: right; font-weight:bold;">165</p>
+                    </td>
+                    <td style="text-align: left" width="20%">
+                        <p class="formSetting"><b>CGPI</b></p>
+                        <p class="formSetting" style="float:right;text-align: right; font-weight:bold;">546/70=7.8</p>
+                    </td>
+                    <td style="text-align: left" width="20%">
+                        <p class="formSetting"><b>CGPI TOTAL </b></p>
+                        <p class="formSetting" style="float:right;text-align: right; font-weight:bold;">546</p>
+                    </td>
+                </tr>                        
+            </tbody></table>
+			
+			
+			
+            <br><br>
+            
+			
+            <br><br>
+            <table width="100%" style="margin-top:1px;"> 
+                <tbody><tr>
+                    <td style="border: 0;  text-align: left">                              
+                        <p style="margin-top:5px; text-align: center;font-size: 16px; "><b>Maintained by: Computer Centre, NIT Hamirpur [HP]</b></p>
+                        <p style="margin-top:5px; text-align: center;font-size: 16px; "><b> Note:</b> <b style="color:red;">Computer Centre is not responsible for any discrepancy in the results. If any please report it to Examination Branch NIT Hamirpur. [Ph-01972254019]</b></p>
+                    </td>
+                </tr>
+            </tbody></table>
+
+            <div style="clear:both"></div>
+
+        </div>
+
+        <button class="button -dark center no-print" onclick="window.print();">Click Here to Print</button>
+    
+
+</body></html>
